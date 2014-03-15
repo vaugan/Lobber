@@ -10,8 +10,8 @@ import java.awt.Color;
  *
  * @author Devadas.Vijayan
  */
-public interface LobberConstants
-{
+public interface LobberConstants {
+
     int LEVEL_EASY = 1; //10
     int LEVEL_MEDIUIM = 2;//12
     int LEVEL_DIFFICULT = 3;//16
@@ -56,7 +56,7 @@ public interface LobberConstants
     int APP_TITLE_Y_POS = 100;
     int APP_TITLE_WIDTH = 240;
     int APP_TITLE_HEIGHT = 75;
-    
+
     // Location of the lobber grid within UI
     int ADVT_X_POS = 933;
     int ADVT_Y_POS = 300;
@@ -64,12 +64,20 @@ public interface LobberConstants
     int ADVT_HEIGHT = 340;
 
     String APP_TITLE_IMAGE = "resources/AppTitle.png";
-	
-	// Location of the lobber grid within UI
+
+    // Location of the lobber grid within UI
     int VIDEO_X_POS = 933;
     int VIDEO_Y_POS = 50;
     int VIDEO_WIDTH = 310;
     int VIDEO_HEIGHT = 174;
+
+    int GAME_NOT_STARTED = 0;
+    int MOVE_AROUND_BOARD = 1;
+    int MOVE_IN_SEGMENT = 2;
+    int LAUNCH_DART = 3;
+
+    int TOWARDS_BULLSEYE = 0;
+    int AWAY_FROM_BULLSEYE = 1;
 
     // Images for status display
     String PLAYER_WON_STATUS_IMAGE = "resources/status_icons/Status_Lost.png";
@@ -78,8 +86,7 @@ public interface LobberConstants
     String PLAYER_THINKING_STATUS_IMAGE = "resources/status_icons/Status_Thinking.png";
     String WELCOME_AND_WAIT_STATUS_IMAGE = "resources/status_icons/Status_Welcome.png";
     String WAITING_FOR_OPPONENT_STATUS_IMAGE = "resources/status_icons/Status_Waiting.png";
-    
-    
+
     // Images to show in cells on each scenarios
     String NO_FILLED_NO_HIGHLIGHT = "resources/cell_icons/NF_HN.png";
     String NO_FILLED_HIGHLIGHTED = "resources/cell_icons/NF_HY.png";
@@ -91,17 +98,26 @@ public interface LobberConstants
     String PLAYER_2_NO_HIGHLIGHT_LAST_SELECTED = "resources/cell_icons/P2_LS_HN.png";
     String PLAYER_2_HIGHLIGHTED = "resources/cell_icons/P2_NS_HY.png";
     String PLAYER_2_HIGHLIGHTED_LAST_SELECTED = "resources/cell_icons/P2_LS_HY.png";
+    String CROSSHAIR = "resources/cell_icons/crosshaircyan1.png";
 
     String HELP_IMAGE_START = "resources/help_images/Help_Start.png";
     String HELP_IMAGE_PLAYING = "resources/help_images/Help_Playing.png";
     String HELP_IMAGE_PLAY_OVER = "resources/help_images/Help_GameOver.png";
 
-    String[] ADVT_SLIDESHOW_IMAGES =
-    {
-        "resources/advt_slideshow/ad1.png", "resources/advt_slideshow/ad2.png",
-        "resources/advt_slideshow/ad3.png", "resources/advt_slideshow/ad4.png",
-        "resources/advt_slideshow/ad5.png", "resources/advt_slideshow/ad6.png",
-        "resources/advt_slideshow/ad7.png", "resources/advt_slideshow/ad8.png",
-        "resources/advt_slideshow/ad9.png", "resources/advt_slideshow/ad10.png"
-    };
+    String[] ADVT_SLIDESHOW_IMAGES
+            = {
+                "resources/advt_slideshow/ad1.png", "resources/advt_slideshow/ad2.png",
+                "resources/advt_slideshow/ad3.png", "resources/advt_slideshow/ad4.png",
+                "resources/advt_slideshow/ad5.png", "resources/advt_slideshow/ad6.png",
+                "resources/advt_slideshow/ad7.png", "resources/advt_slideshow/ad8.png",
+                "resources/advt_slideshow/ad9.png", "resources/advt_slideshow/ad10.png"
+            };
+    String[] CROSSHAIR_IMAGES
+            = {
+                "resources/cell_icons/crosshaircyan1.png",
+                "resources/cell_icons/crosshaircyan2.png",
+                "resources/cell_icons/crosshaircyan3.png",
+                "resources/cell_icons/crosshaircyan4.png",
+                "resources/cell_icons/crosshaircyan5.png"
+            };
 }
