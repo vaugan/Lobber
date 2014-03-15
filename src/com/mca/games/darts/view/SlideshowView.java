@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package com.dstvo.lobber.view;
+package com.mca.games.darts.view;
 
-import com.dstvo.lobber.util.ImageCache;
+import com.mca.games.darts.util.ImageCache;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,7 +13,7 @@ import java.util.TimerTask;
  *
  * @author user
  */
-public class SlideshowGadget extends ImageBox {
+public class SlideshowView extends ImageBoxView {
     private String[] slides;
     private int delay;
     Timer timer = new Timer();

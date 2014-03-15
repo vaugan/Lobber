@@ -2,23 +2,27 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dstvo.lobber.view;
+package com.mca.games.darts.view;
 
-import com.dstvo.lobber.LobberConstants;
-import com.dstvo.lobber.controller.LobberController;
-import com.dstvo.lobber.model.CellContent;
-import com.dstvo.lobber.util.ImageCache;
+import com.mca.games.darts.util.Constants;
+import com.mca.games.darts.controller.DartsGameController;
+import com.mca.games.darts.util.ImageCache;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyListener;
 
 /**
  *
  * @author user
  */
-public class Crosshair extends Component implements Runnable {
+public class CrosshairView extends Component implements Runnable {
+
+    private KeyListener listener;
 
     private Image image;
     boolean isHighlighted;
@@ -28,13 +32,17 @@ public class Crosshair extends Component implements Runnable {
     private float angle;
     private final int RADIUS = 218;
     private int tempRadius = RADIUS;
-    private int segmentMovement = LobberConstants.TOWARDS_BULLSEYE;
-
+    private int segmentMovement = Constants.TOWARDS_BULLSEYE;
+    Container localContainer;
     private final int DELAY = 50;
-    private int state = LobberConstants.MOVE_AROUND_BOARD;
+    private int state = Constants.MOVE_AROUND_BOARD;
 
-    public Crosshair() {
-        image = ImageCache.getImage(LobberConstants.CROSSHAIR);
+    public CrosshairView() {
+        image = ImageCache.getImage(Constants.CROSSHAIR);
+    }
+
+    public void setKeyListener(KeyListener keyListener) {
+        this.listener = keyListener;
     }
 
     void setHighlighted(boolean highlightStatus) {
@@ -67,7 +75,7 @@ public class Crosshair extends Component implements Runnable {
 
     private void updateImage() {
         int index = (int) ((angle * 10) % 5);
-        image = ImageCache.getImage(LobberConstants.CROSSHAIR_IMAGES[index]);
+        image = ImageCache.getImage(Constants.CROSSHAIR_IMAGES[index]);
 
 //        System.out.println("Index="+index + " Image="+image);
     }
@@ -81,7 +89,7 @@ public class Crosshair extends Component implements Runnable {
         while (true) {
 
             //update coordinates
-            if (state == LobberConstants.MOVE_AROUND_BOARD) {
+            if (state == Constants.MOVE_AROUND_BOARD) {
                 moveCrosshairAroundBoard();
             } else {
                 moveCrosshairInSegment();
@@ -127,24 +135,23 @@ public class Crosshair extends Component implements Runnable {
     private void moveCrosshairInSegment() {
 
         switch (segmentMovement) {
-            case LobberConstants.TOWARDS_BULLSEYE:
+            case Constants.TOWARDS_BULLSEYE:
                 if (tempRadius < 0) {
                     tempRadius = 0;
-                    segmentMovement = LobberConstants.AWAY_FROM_BULLSEYE;
+                    segmentMovement = Constants.AWAY_FROM_BULLSEYE;
                 } else {
                     tempRadius -= 10;
                 }
                 break;
-            case LobberConstants.AWAY_FROM_BULLSEYE:
+            case Constants.AWAY_FROM_BULLSEYE:
                 if (tempRadius > RADIUS) {
                     tempRadius = RADIUS;
-                    segmentMovement = LobberConstants.TOWARDS_BULLSEYE;
+                    segmentMovement = Constants.TOWARDS_BULLSEYE;
                 } else {
                     tempRadius += 10;
                 }
                 break;
         }
-
 
         x = (int) (Math.cos(angle) * tempRadius) + 288;
         y = (int) (Math.sin(angle) * tempRadius) + 270;
@@ -158,6 +165,33 @@ public class Crosshair extends Component implements Runnable {
     }
 
     void updateState(int crosshairState) {
+        state = crosshairState;
+    }
+
+    public void initGui() {
+//        this.setBounds(Constants.APP_X_POS, Constants.APP_Y_POS,
+//                Constants.APP_WIDTH, Constants.APP_HEIGHT);
+//        this.setBackground(Color.black);
+//        localContainer = new Container() {
+//            public void paint(Graphics g) {
+//                g.drawImage(ImageCache.getImage("resources/Background.png"), 0, 0,
+//                        Constants.APP_WIDTH, Constants.APP_HEIGHT, null);
+//                super.paint(g);
+//            }
+//        };
+//        localContainer.setBounds(getBounds());
+//
+//        this.add(localContainer);
+    }
+
+
+    public void showUI() {
+        this.setVisible(true);
+//        this.addKeyListener(listener);
+//        this.requestFocus();    
+    }
+
+    public void updateCrosshairState(int crosshairState) {
         state = crosshairState;
     }
 }

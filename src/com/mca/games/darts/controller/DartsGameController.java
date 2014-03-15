@@ -2,11 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dstvo.lobber.controller;
+package com.mca.games.darts.controller;
 
-import com.dstvo.lobber.LobberConstants;
-import com.dstvo.lobber.LobberUtil;
-import com.dstvo.lobber.model.LobberModel;
+import com.mca.games.darts.model.BoardModel;
+import com.mca.games.darts.model.CrosshairModel;
+import com.mca.games.darts.util.Constants;
+import com.mca.games.darts.util.Util;
+import com.mca.games.darts.model.DartModel;
+import com.mca.games.darts.view.BoardView;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -14,12 +17,14 @@ import java.awt.event.KeyListener;
  *
  * @author Devadas.Vijayan
  */
-public class LobberController implements KeyListener
+public class DartsGameController implements KeyListener
 {
-    private LobberModel model;
+    private BoardModel model;
+//    private CrosshairModel crosshairModel;
+//    private DartModel dartModel;
     private boolean matchInProgress;
 
-    public void setModel(LobberModel model)
+    public void setModel(BoardModel model)
     {
         this.model = model;
     }
@@ -38,20 +43,20 @@ public class LobberController implements KeyListener
         switch (e.getKeyCode())
         {
             case KeyEvent.VK_RIGHT:
-                model.moveRight();
+//                model.moveRight();
                 break;
             case KeyEvent.VK_LEFT:
-                model.moveLeft();
+//                model.moveLeft();
                 break;
             case KeyEvent.VK_UP:
-                model.moveUp();
+//                model.moveUp();
                 break;
             case KeyEvent.VK_DOWN:
-                model.moveDown();
+//                model.moveDown();
                 break;
             case KeyEvent.VK_ENTER:
                 matchInProgress = true;
-                model.processSelection();
+//                model.handleOKButton();
                 break;
             case KeyEvent.VK_1:
                 matchInProgress = false;
@@ -60,21 +65,21 @@ public class LobberController implements KeyListener
             case KeyEvent.VK_9:
                 if (!matchInProgress)
                 {
-                    LobberUtil.setDifficultyLevel(LobberConstants.LEVEL_DIFFICULT);
+                    Util.setDifficultyLevel(Constants.LEVEL_DIFFICULT);
                     model.reset(true);
                 }
                 break;
             case KeyEvent.VK_8:
                 if (!matchInProgress)
                 {
-                    LobberUtil.setDifficultyLevel(LobberConstants.LEVEL_MEDIUIM);
+                    Util.setDifficultyLevel(Constants.LEVEL_MEDIUIM);
                     model.reset(true);
                 }
                 break;
             case KeyEvent.VK_7:
                 if (!matchInProgress)
                 {
-                    LobberUtil.setDifficultyLevel(LobberConstants.LEVEL_EASY);
+                    Util.setDifficultyLevel(Constants.LEVEL_EASY);
                     model.reset(true);
                 }
                 break;
@@ -84,4 +89,5 @@ public class LobberController implements KeyListener
     public void keyReleased(KeyEvent e)
     {
     }
+
 }

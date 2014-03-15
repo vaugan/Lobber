@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dstvo.lobber.util;
+package com.mca.games.darts.util;
 
 import java.awt.Container;
 import java.awt.Image;

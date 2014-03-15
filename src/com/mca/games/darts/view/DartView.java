@@ -2,13 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dstvo.lobber.view;
+package com.mca.games.darts.view;
 
-import com.dstvo.lobber.model.GridPosition;
-import com.dstvo.lobber.LobberConstants;
-import com.dstvo.lobber.model.LobberState;
-import com.dstvo.lobber.util.ImageCache;
-import com.dstvo.lobber.util.VideoHandler;
+import com.mca.games.darts.util.Constants;
+import com.mca.games.darts.util.ImageCache;
+import com.mca.games.darts.util.VideoHandler;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Frame;
@@ -20,26 +18,26 @@ import java.awt.event.KeyListener;
  *
  * @author user
  */
-public class LobberView extends Frame
+public class DartView extends Frame
 {
 //    private LobberGrid grid;
     private KeyListener listener;
-//    private ImageBox statusBox;
-//    private ImageBox helpText;
+//    private ImageBoxView statusBox;
+//    private ImageBoxView helpText;
     Container localContainer;
-    private ImageBox appTitle;
-    private Crosshair crosshair;
+    private ImageBoxView appTitle;
+    private CrosshairView crosshair;
 
     public void initGui()
     {
-        this.setBounds(LobberConstants.APP_X_POS, LobberConstants.APP_Y_POS,
-                LobberConstants.APP_WIDTH, LobberConstants.APP_HEIGHT);
+        this.setBounds(Constants.APP_X_POS, Constants.APP_Y_POS,
+                Constants.APP_WIDTH, Constants.APP_HEIGHT);
         this.setBackground(Color.black);
         localContainer = new Container() {
             public void paint(Graphics g)
             {
                 g.drawImage(ImageCache.getImage("resources/Background.png"), 0, 0,
-                        LobberConstants.APP_WIDTH, LobberConstants.APP_HEIGHT, null);
+                        Constants.APP_WIDTH, Constants.APP_HEIGHT, null);
                 super.paint(g);
             }
         };
@@ -70,9 +68,9 @@ public class LobberView extends Frame
     }
     private void createCrosshair()
     {
-        crosshair = new Crosshair();
-        crosshair.setBounds(LobberConstants.GRID_X_POS,
-                LobberConstants.GRID_Y_POS, 600, 600);
+        crosshair = new CrosshairView();
+        crosshair.setBounds(Constants.GRID_X_POS,
+                Constants.GRID_Y_POS, 600, 600);
         localContainer.add(crosshair);
         crosshair.setVisible(true);
         
@@ -94,17 +92,13 @@ public class LobberView extends Frame
 
     private void createStatusDisplay()
     {
-//        statusBox = new ImageBox();
+//        statusBox = new ImageBoxView();
 //        statusBox.setBounds(LobberConstants.STATUS_X_POS, LobberConstants.STATUS_Y_POS,
 //                LobberConstants.STATUS_WIDTH, LobberConstants.STATUS_HEIGHT);
 //        localContainer.add(statusBox);
 //        statusBox.setVisible(true);
     }
 
-    public void shiftFocusToCell(GridPosition position)
-    {
-//        grid.shiftFocusToCell(position);
-    }
 
     public void updateCrosshairState(int state)
     {
@@ -112,31 +106,27 @@ public class LobberView extends Frame
     }
     
     
-    public void selectCell(GridPosition position, byte cellValue)
-    {
-//        grid.selectCell(position, cellValue);
-    }
 
     public void displayStatus(int status)
     {
 //        switch (status)
 //        {
-//            case LobberState.OPPONENT_WON:
+//            case DartsState.OPPONENT_WON:
 //                statusBox.setImage(LobberConstants.OPPONENT_WON_STATUS_IMAGE);
 //                break;
-//            case LobberState.PLAYER_THINKING:
+//            case DartsState.PLAYER_THINKING:
 //                statusBox.setImage(LobberConstants.PLAYER_THINKING_STATUS_IMAGE);
 //                break;
-//            case LobberState.PLAYER_WON:
+//            case DartsState.PLAYER_WON:
 //                statusBox.setImage(LobberConstants.PLAYER_WON_STATUS_IMAGE);
 //                break;
-//            case LobberState.WAITING_FOR_OPPONENT:
+//            case DartsState.WAITING_FOR_OPPONENT:
 //                statusBox.setImage(LobberConstants.WAITING_FOR_OPPONENT_STATUS_IMAGE);
 //                break;
-//            case LobberState.GAME_DRAWN:
+//            case DartsState.GAME_DRAWN:
 //                statusBox.setImage(LobberConstants.GAME_DRAWN_STATUS_IMAGE);
 //                break;
-//            case LobberState.WELCOME_PLAYER:
+//            case DartsState.WELCOME_PLAYER:
 //                statusBox.setImage(LobberConstants.WELCOME_AND_WAIT_STATUS_IMAGE);
 //                break;
 //        }
@@ -147,16 +137,16 @@ public class LobberView extends Frame
     {
 //        switch (status)
 //        {
-//            case LobberState.OPPONENT_WON:
-//            case LobberState.PLAYER_WON:
-//            case LobberState.GAME_DRAWN:
+//            case DartsState.OPPONENT_WON:
+//            case DartsState.PLAYER_WON:
+//            case DartsState.GAME_DRAWN:
 //                helpText.setImage(LobberConstants.HELP_IMAGE_PLAY_OVER);
 //                break;
-//            case LobberState.PLAYER_THINKING:
-//            case LobberState.WAITING_FOR_OPPONENT:
+//            case DartsState.PLAYER_THINKING:
+//            case DartsState.WAITING_FOR_OPPONENT:
 //                helpText.setImage(LobberConstants.HELP_IMAGE_PLAYING);
 //                break;
-//            case LobberState.WELCOME_PLAYER:
+//            case DartsState.WELCOME_PLAYER:
 //                helpText.setImage(LobberConstants.HELP_IMAGE_START);
 //                break;
 //        }
@@ -177,7 +167,7 @@ public class LobberView extends Frame
 
     private void createHelpDisplay()
     {
-//        helpText = new ImageBox();
+//        helpText = new ImageBoxView();
 //        helpText.setBounds(LobberConstants.HELPTEXT_X_POS, LobberConstants.HELPTEXT_Y_POS,
 //                LobberConstants.HELPTEXT_WIDTH, LobberConstants.HELPTEXT_HEIGHT);
 //        helpText.setImage(LobberConstants.HELP_IMAGE_START);
@@ -187,11 +177,11 @@ public class LobberView extends Frame
 
     private void createAdvtSlideShow()
     {
-        SlideshowGadget slideShow = new SlideshowGadget();
-        slideShow.setBounds(LobberConstants.ADVT_X_POS, LobberConstants.ADVT_Y_POS,
-                LobberConstants.ADVT_WIDTH, LobberConstants.ADVT_HEIGHT);
+        SlideshowView slideShow = new SlideshowView();
+        slideShow.setBounds(Constants.ADVT_X_POS, Constants.ADVT_Y_POS,
+                Constants.ADVT_WIDTH, Constants.ADVT_HEIGHT);
         slideShow.setDelay(10000);
-        slideShow.setSlides(LobberConstants.ADVT_SLIDESHOW_IMAGES);
+        slideShow.setSlides(Constants.ADVT_SLIDESHOW_IMAGES);
         localContainer.add(slideShow);
         slideShow.startSlideShow();
         slideShow.setVisible(true);
@@ -199,10 +189,10 @@ public class LobberView extends Frame
 
     private void createAppTitle()
     {
-        appTitle = new ImageBox();
-        appTitle.setBounds(LobberConstants.APP_TITLE_X_POS, LobberConstants.APP_TITLE_Y_POS,
-                LobberConstants.APP_TITLE_WIDTH, LobberConstants.APP_TITLE_HEIGHT);
-        appTitle.setImage(LobberConstants.APP_TITLE_IMAGE);
+        appTitle = new ImageBoxView();
+        appTitle.setBounds(Constants.APP_TITLE_X_POS, Constants.APP_TITLE_Y_POS,
+                Constants.APP_TITLE_WIDTH, Constants.APP_TITLE_HEIGHT);
+        appTitle.setImage(Constants.APP_TITLE_IMAGE);
         localContainer.add(appTitle);
         appTitle.setVisible(true);
     }

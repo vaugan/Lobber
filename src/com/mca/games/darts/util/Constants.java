@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dstvo.lobber;
+package com.mca.games.darts.util;
 
 import java.awt.Color;
 
@@ -10,7 +10,7 @@ import java.awt.Color;
  *
  * @author Devadas.Vijayan
  */
-public interface LobberConstants {
+public interface Constants {
 
     int LEVEL_EASY = 1; //10
     int LEVEL_MEDIUIM = 2;//12

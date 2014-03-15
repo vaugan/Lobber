@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package com.dstvo.lobber.view;
+package com.mca.games.darts.view;
 
-import com.dstvo.lobber.util.ImageCache;
+import com.mca.games.darts.util.ImageCache;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -15,7 +15,7 @@ import java.awt.Image;
  *
  * @author user
  */
-public class ImageBox extends Component
+public class ImageBoxView extends Component
 {
     Image image;
     void setImage(String imagePath)
